@@ -1,0 +1,423 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fce4ec;
+    color: #4a148c;
+    min-height: 100vh; /* Ensure body covers full viewport height */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px; /* Add space at the bottom */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.pink.bg {
+    background-color: #fce4ec;
+}
+
+.container-fluid {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    flex: 1; /* Allow the container to expand and fill available space */
+    width: 100%;
+    max-width: 1045px; /* Adjusted container width */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: auto;
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    box-sizing: border-box; /* Ensure padding and borders are included in width */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    height: auto;
+}
+
+.col-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-right:#f48fb1 1px solid;
+}
+
+.col-8 {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(90deg, rgba(244,143,177,0.8), rgba(206,147,216,0.8));
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    width: 100vw; /* Full width of the window */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    overflow: visible; /* Allow elements to overlap the header */
+}
+
+.header.minimized {
+    height: 50px; /* Reduced height */
+    padding: 10px 20px; /* Adjust padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Keep it visible at the top */
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: linear-gradient(90deg, rgba(244,143,177,0.9), rgba(206,147,216,0.9));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header.minimized .logo {
+    width: 30px; /* Make the logo smaller */
+    height: auto;
+}
+
+/* Breakpoints for responsiveness */
+@media (max-width: 768px) {
+    .header-icons {
+        display: none; /* Hide stats on smaller devices */
+    }
+
+    .header.minimized h1 {
+        font-size: 12px; /* Make the name text smaller for small devices */
+    }
+
+    .header-icons span {
+        font-size: 12px; /* Make the stats smaller */
+    }
+
+    .header-icons span i {
+        margin-right: 5px; /* Adjust spacing for icons */
+    }
+
+    .header-icons span {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .header-icons span::after {
+        content: none; /* Remove the words */
+    }
+
+    .profile-info {
+        width: 100%; /* Make the profile block fill the width */
+        text-align: center; /* Center align the content */
+        border-right: none; /* Remove the right border */
+        padding: 20px 0; /* Add padding for spacing */
+        order: -1; /* Move it to the top */
+    }
+
+    .col-3 {
+        display: none; /* Hide the left column */
+    }
+
+    .col-8 {
+        flex: 0 0 100%; /* Make the posts section fill the width */
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .header.minimized h1 {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+
+/* Header Icons */
+.header-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.header-icons i {
+    margin-right: 5px;
+}
+
+.header.minimized .header-icons {
+    order: 2; /* Center the stats */
+    margin: 0 auto;
+}
+
+/* Profile Section */
+.profile {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.profile-info {
+    grid-column: 1 / 2;
+    text-align: center;
+    position: sticky; /* Keep the profile section at the top */
+    top: 50px; /* Adjusted spacing below the minimized header to prevent photo cutoff */
+    z-index: 10; /* Ensure it stays above other elements */
+}
+
+.header:not(.minimized) + .profile-info {
+    top: -30px; /* Overhang the profile picture slightly for the full header */
+}
+
+.profile-pic {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    position: relative; /* Reset to default positioning */
+    margin: 0 auto; /* Center within the column */
+    display: block;
+    border: 5px solid #ce93d8;
+    background: white;
+    top: 0; /* Reset the offset to keep it within the white column */
+    z-index: 20; /* Ensure it appears above the header */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-info h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.profile-info p {
+    font-style: italic;
+    color: #880e4f;
+}
+
+.bio-data {
+    text-align: left; /* Left align the bio data */
+    margin: 5px 0; /* Add spacing between lines */
+}
+
+/* Posts Section */
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.post {
+    background: none; /* Removed background from the post container */
+    border: none; /* Removed border from the post container */
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.post::after {
+    content: "";
+    display: block;
+    width: 80%; /* Not full width */
+    height: 2px;
+    background-color: #f48fb1; /* Thin pink line */
+    margin: 20px auto 0;
+}
+
+.post.no-line::after {
+    display: none; /* Remove the horizontal line for posts with the no-line class */
+}
+
+.post img {
+    border: 2px solid #ce93d8; /* Added border around the image */
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    margin: 10px 0; /* Added spacing around the image */
+}
+
+.post h3 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #4a148c;
+    text-align: left; /* Left align the title */
+    width: 100%;
+}
+
+.post p {
+    margin: 10px 0;
+    padding: 0;
+    color: #4a148c;
+    text-align: right; /* Right align the text */
+    width: 100%;
+}
+
+.post a {
+    color: #880e4f;
+    text-decoration: underline;
+}
+
+/* Post Header Styles */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.post-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: #4a148c;
+}
+
+.post-icons i {
+    margin-right: 5px;
+}
+
+.sponsored-content {
+    background-color: #ffe6f0; /* Light pink background */
+    border: 2px solid #f8bbd0; /* Soft pink border */
+    border-radius: 15px; /* Rounded corners */
+    padding: 15px; /* Add padding inside the post */
+    width: 100%; /* Ensure it spans the full width of the frame */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Centered Content Styles */
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.centered-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.centered-content input {
+    padding: 10px;
+    border: 1px solid #ce93d8;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.centered-content button {
+    background-color: #ce93d8;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.centered-content button:hover {
+    background-color: #ab47bc;
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(90deg, rgba(244,143,177,0.8), rgba(206,147,216,0.8)); /* Same gradient as header */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Post Date Styles */
+.post-date {
+    float: left;
+    margin-right: 10px;
+    font-size: smaller;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Pink Button Styles */
+.pink-button {
+    display: inline-block;
+    background-color: #f48fb1; /* Pink background */
+    color: white; /* White text */
+    padding: 8px 15px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    font-size: 14px; /* Adjust font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.pink-button:hover {
+    background-color: #ec407a; /* Darker pink on hover */
+    text-decoration: none; /* Ensure no underline on hover */
+    color:white
+}
+
+/* Profile Update Image Styles */
+.profile-update-img {
+    width: 50%!important;
+    height: auto!important;
+    border-radius: 50%!important; /* Make the image circular */
+    border: 5px solid #ce93d8 !important; /* Add a purple border */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3)!important; /* Add a subtle shadow */
+}
+
+/* Achievements, Testimonials, and Appearances Sections */
+.achievements, .testimonials, .appearances {
+    margin-top: 20px; /* Add spacing above the sections */
+    padding: 10px;
+    background-color: #ffe6f2;
+    border-radius: 10px;
+    width: 100%; /* Ensure it spans the full width of the main column */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.achievements h3, .testimonials h3, .appearances h3 {
+    color: #d63384;
+    font-weight: bold;
+    margin-bottom: 10px; /* Add spacing below the headings */
+}
+
+.achievements ul, .appearances ul {
+    list-style-type: none; /* Remove list icons */
+    padding-left: 0; /* Align with the main column */
+}
+
+.appearances ul li {
+    text-align: left; /* Left align the text */
+    margin-bottom: 5px; /* Add spacing between items */
+}
+
+.testimonials blockquote {
+    font-style: italic;
+    color: #6c757d;
+    border-left: 4px solid #d63384;
+    padding-left: 10px;
+    margin: 10px 0;
+}
+
+.testimonials footer {
+    text-align: right;
+    font-size: 0.9em;
+    color: #6c757d;
+}

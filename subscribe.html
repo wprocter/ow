@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe - Only Wabbits</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="pink bg">
+    <div class="container-fluid">
+        <header class="header">
+            <img src="assets/img/owlogo.png" alt="Only Wabbits Logo" class="logo" width="250" height="auto">
+            <h1>Subscribe to Only Wabbits</h1>
+        </header>
+    </div>
+
+    <div class="container">
+        <main class="centered-content">
+            <h2>Subscribe to Premium Content</h2>
+            <p>Join Jessica Wabbit's exclusive community to access premium content and updates!</p>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="card">Card Details:</label>
+                <input type="text" id="card" name="card" placeholder="Card Number" required>
+
+                <label for="expiry">Expiry Date:</label>
+                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+
+                <button type="submit">Subscribe Now</button>
+            </form>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Only Wabbits. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            window.location.href = 'stay_safe.html'; // Redirect to the safety page
+        });
+    </script>
+</body>
+</html>
